@@ -1,0 +1,99 @@
+
+
+button {
+    background-color: rgb(1, 117, 138);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 1.2em;
+    letter-spacing: 0.21px;
+    line-height: 16px;
+    max-width: 255px;
+    padding: 10px 24px;
+    text-align: left;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+    transition-timing-function: linear;
+    margin-top: 0.6em;
+  }
+
+input[type="submit" i] {
+    background-color: rgb(1, 117, 138);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+    letter-spacing: 0.21px;
+    line-height: 16px;
+    max-width: 255px;
+    padding: 10px 24px;
+    text-align: left;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+    transition-timing-function: linear;
+    margin-top: 0.6em;
+}
+
+h1 {
+    display: inline;
+    font-size: 2em;
+    margin-block-start: 4em;
+    margin-block-end: .62em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h2 {
+    display: inline;
+    font-size: 2em;
+    margin-block-start: 4em;
+    margin-block-end: .62em;
+    margin-inline-start: 80px;
+    margin-inline-end: 80px;
+    font-weight: lighter;
+
+}
+
+.container{
+    text-align: center;
+    margin: 80px;
+    margin-block-end: .62em;
+}
+
+p {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: x-large;
+}
+
+p#instructions{
+    font-size: large;
+}
+
+.anwserButton {
+
+    margin-block-start: .62em;
+    margin-block-end: 0em;
+    margin-inline-start: 100px;
+    margin-inline-end: 80px;
+    width: 225px;
+}
+
+.endGame {
+    margin-block-start: 80px;
+    margin-inline-end: 80px;
+    margin-inline-start: 80px;
+}
+
+.anwserDisplays{
+    margin: 80px;
+}
+
+label {
+    cursor: default;
+    font-size: x-large;
+}

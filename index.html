@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Code Quiz</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <div>
+            <p id="timer">Time: 0</p>
+        </div>
+        
+        <div class = "container">
+            <h1 id="question/title" >Coding Quiz Challenge</h1>
+            <p id="instructions">Try to anwser the following code-related questions within the time limit.
+                             <br>Keep in mind that incorrect anwsers will penalize your score & time by ten seconds!</p>
+            <div class = "start">
+                <button type="button" id="start">Start Quiz</button>
+            </div>
+        </div>
+    </head>
+
+    <body>
+        <div class = "anwserButtons" id="anwserButtons">
+            <button type="button" class="anwserButton" id="anwser1" style="display:none" width="225px">Anwser1</button>
+            <br>
+            <button type="button" class="anwserButton" id="anwser2" style="display:none" width="225px">Anwser2</button>
+            <br>
+            <button type="button" class="anwserButton" id="anwser3" style="display:none" width="225px">Anwser3</button>
+            <br>
+            <button type="button" class="anwserButton" id="anwser4" style="display:none" width="225px">Anwser4</button>
+        </div>
+        <div class = "anwserDisplays" >
+            <h2 id="correctDisplay" style="display:none" >Correct!</h2>
+            <h2 id="wrongDisplay" style="display:none">Wrong!</h2>
+        </div>
+        <div class =  "endGame">
+            <p id="finalScore"></p>
+            <p id="userInput"></p>
+            <form style="display:none" action="" method="get" id="form">
+                <div class="form">
+                  <label for="initials">Enter your initials: </label>
+                  <input type="text" name="name" id="name" required>
+                  <input type="submit" value="Submit" id="submit"> 
+                </div>
+            </form>
+        </div>
+       <script src = "assets/js/script.js"></script>
+    </body>
+</html>
