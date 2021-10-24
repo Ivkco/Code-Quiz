@@ -1,4 +1,4 @@
-https://Ivkco.github.io/code-quiz/
+https://Ivkco.github.io/Code-Quiz/
 
 # code-quiz
 Homework 4
