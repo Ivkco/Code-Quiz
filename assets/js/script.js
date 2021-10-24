@@ -10,13 +10,11 @@ var btn4 = document.getElementById("anwser4");
 var anwserDisplays = document.querySelector(".anwserDisplays");
 var correctDisplay = document.getElementById("correctDisplay");
 var wrongDisplay = document.getElementById("wrongDisplay");
-var quizRecord = [];
 var timeLeft = 0;
-// var questionNum = 0;
 var finalScore = 0;
-var numberOfTrys = 0;
 
 timerEl.setAttribute("style","text-align: right");
+var questionNum = 0;
 
 function startQuiz(){
     instructionEl.parentNode.removeChild(instructionEl);
@@ -28,17 +26,17 @@ function startQuiz(){
     btn4.style = "display: inline";
     
     timer();
-    quizRunner(2);
+    displayQuestion();
 }
 
 function timer(){
-  timeLeft = 75;
+  timeLeft = 69;
 
   var timeInterval = setInterval(function(){
     
     if(timeLeft > 0) {
-        timerEl.textContent = 'Time: ' + timeLeft;
-        timeLeft--;
+      timerEl.textContent = 'Time: ' + timeLeft;
+      timeLeft--;
     }else {
       timerEl.textContent = 'Time: ' + timeLeft;
       endOfGame();
@@ -48,7 +46,7 @@ function timer(){
   }, 1000);
 }
 
-function quizRunner(questionNum) {
+function displayQuestion() {
   var answer = questions[questionNum].correctAnwser; //rewrite click function to compare answer with event.target we need clickfunction to do something with right or wrong answer
 
   questionEl.textContent = questions[questionNum].question;
@@ -66,68 +64,33 @@ function quizRunner(questionNum) {
 }
 
 function clickFunction(event) {
-  rightOrWrong = checkAnwser(event.target);
-  quizRunner();
-}
-// function quizRunner(questionNum){
-//   var rightOrWrong;
-//   if(questionNum === 8){
-//     endOfGame()
-//   }
-//   if(timeLeft < 1){
-//     return; 
-//   }else {
-//     questionEl.textContent = questions[questionNum].question;
-
-//     btn1.innerHTML = questions[questionNum].option1;
-//     btn2.innerHTML = questions[questionNum].option2;
-//     btn3.innerHTML = questions[questionNum].option3;
-//     btn4.innerHTML = questions[questionNum].option4;
-
-//     btn1.addEventListener("click", clickFunction, {once: true});
-//     btn2.addEventListener("click", clickFunction, {once: true});
-//     btn3.addEventListener("click", clickFunction, {once: true});
-//     btn4.addEventListener("click", clickFunction, {once: true});
-//   }  
-// }
-
-// function clickFunction(event){
-//   rightOrWrong = checkAnwser(event.target);
-//   questionNum++;
-//   quizRunner();
-// }
-
-function checkAnwser(selected){
-  
-  var selectedOption;
-  
-  if(selected.id === 'anwser1'){
-    selectedOption = questions[questionNum].option1;
-  }else if(selected.id === 'anwser2'){
-    selectedOption = questions[questionNum].option2;
-  }else if(selected.id === 'anwser3'){
-    selectedOption = questions[questionNum].option3;
-  }else {
-    selectedOption = questions[questionNum].option4;  
-  } 
-  if(questions[questionNum].correctAnwser === selectedOption){  
+  //checks if user selected correct answer
+  var userAnswer = event.target.textContent
+  if (userAnswer === questions[questionNum].correctAnwser) {
     correctDisplay.style = "display: inline";
     wrongDisplay.style = "display: none";
-    finalScore = finalScore +1;
-    return "Correct!";
-  }else {  
+    finalScore++;
+  } else {
     correctDisplay.style = "display: none";
     wrongDisplay.style = "display: inline";
-    timeLeft = timeLeft -10;
-    return "Wrong!";
+    finalScore--;
+    timeLeft = timeLeft - 5;
+  }
+  
+  //determines next page to go to
+  questionNum++;
+  if (questionNum < 8) {
+    displayQuestion()
+  } else {
+    endOfGame();
   }
 }
 
 function endOfGame(){
+  //displays score/initials goes from quiz page to final score page
   var userInitials = document.querySelector("#name");
   var inputButton = document.querySelector("#submit");
   var anwserBtnDiv = document.getElementById("anwserButtons");
-  localStorage.setItem(numberOfTrys, numberOfTrys);
 
   questionEl.textContent = "All Done!";
 
@@ -145,23 +108,22 @@ function endOfGame(){
   displayScore.textContent = "Your final score is " + finalScore + ".";
   scoreBoardForm.style = "display: inline";
   
-  inputButton.addEventListener("click", function(event){
-    event.preventDefault();
-    
-    var userData = {
-      initials: userInitials.value.trim(),
-      score: finalScore  
-    };
+  inputButton.addEventListener("click", finalBtn)
 
-    console.log(numberOfTrys)
-
-    localStorage.setItem(quizRecord[numberOfTrys], userInitials);
-    console.log(userData);
-    console.log(quizRecord);
-    
-    numberOfTrys++;
-  });
   return;
+}
+
+function finalBtn(event) { //logs user score and name on button press
+  event.preventDefault();
+  var userInitials = document.querySelector("#name");
+  var userName = userInitials.value.trim();
+
+  localStorage.setItem(userInitials, finalScore);
+
+  console.log({
+    UserName: userName,
+    Score: finalScore  
+  });
 }
 
 startButtonEl.addEventListener("click",startQuiz);
