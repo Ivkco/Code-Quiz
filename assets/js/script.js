@@ -47,8 +47,7 @@ function timer(){
 }
 
 function displayQuestion() {
-  var answer = questions[questionNum].correctAnwser; //rewrite click function to compare answer with event.target we need clickfunction to do something with right or wrong answer
-
+  var answer = questions[questionNum].correctAnwser;
   questionEl.textContent = questions[questionNum].question;
 
   btn1.innerHTML = questions[questionNum].option1;
